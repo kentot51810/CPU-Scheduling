@@ -60,12 +60,12 @@ public class MyController implements Initializable {
 
     @FXML
     void deleteProcessButton(ActionEvent event) {
-        chart.getData().remove(index);
         if (processes.size() <= 0) {
             return;
         }
         processes.remove(processes.size() - 1);
         index--;
+        calculateRoundRobin();
     }
 
 
@@ -188,25 +188,29 @@ public class MyController implements Initializable {
         for (Process process : processes) {
             processNameList.add(process.getProcessName());
         }
+
         XYChart.Series series = new XYChart.Series();
         for (int index = 0; index < processNameList.size(); index ++){
             Integer random = new Random().nextInt(statusColor.length);
             ListIterator<RoundRobin.Process> listIterator = list.listIterator(list.size());
             while (listIterator.hasPrevious()) {
-                String processName = listIterator.previous().getProcessName();
+                RoundRobin.Process listIteratorPrevious = listIterator.previous();
+                String processName = listIteratorPrevious.getProcessName();
                 if (processName.equals(processNameList.get(index))){
                     float turnaroundTime = 0;
                     try {
                         turnaroundTime = listIterator.previous().getTurnaroundTime();
+                        listIterator.next();
                     }catch (NoSuchElementException e){
                         turnaroundTime = 0;
                     }
                     float xValue = turnaroundTime;
                     String yValue = processNameList.get(index);
                     int rowSpan = list.get(index).getBurstTime();
+                    String color = statusColor[index];
 
                     series.getData().add(new XYChart.Data<>(xValue, yValue,
-                            new GanttChart.ExtraData(rowSpan, statusColor[index])));
+                            new GanttChart.ExtraData(rowSpan, color)));
 
                 }
             }
