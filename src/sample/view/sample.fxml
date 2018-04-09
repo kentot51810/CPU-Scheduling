@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="root" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/9.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.controller.MyController">
+    <children>
+        <AnchorPane id="header" prefHeight="66.0" prefWidth="330.0" style="-fx-background-color: #3D4955;">
+            <children>
+                <GridPane alignment="BOTTOM_RIGHT" prefHeight="66.0" prefWidth="329.0">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <ImageView fitHeight="46.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/Home.png"/>
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="46.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true"
+                                   GridPane.columnIndex="1">
+                            <image>
+                                <Image url="@../../images/icons8_Settings_96px_1.png"/>
+                            </image>
+                        </ImageView>
+                    </children>
+                </GridPane>
+            </children>
+        </AnchorPane>
+        <AnchorPane id="home" layoutY="77.0" style="-fx-background-color: #3D4955;">
+            <children>
+                <VBox prefHeight="323.0" prefWidth="330.0">
+                    <children>
+                        <Label contentDisplay="CENTER" text="CPU Scheduling" textFill="#c6c6c6">
+                            <padding>
+                                <Insets left="25.0"/>
+                            </padding>
+                            <font>
+                                <Font name="System Bold" size="20.0"/>
+                            </font>
+                        </Label>
+                        <Label text="Round Robin" textFill="#f5f5f5">
+                            <font>
+                                <Font size="21.0"/>
+                            </font>
+                            <padding>
+                                <Insets left="50.0"/>
+                            </padding>
+                        </Label>
+                        <HBox prefWidth="330.0">
+                            <children>
+                                <Label text="Quantum:" textFill="#bfbfbf">
+                                    <font>
+                                        <Font size="15.0"/>
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets left="70.0"/>
+                                    </HBox.margin>
+                                </Label>
+                                <TextField prefHeight="27.0" prefWidth="103.0">
+                                    <HBox.margin>
+                                        <Insets/>
+                                    </HBox.margin>
+                                </TextField>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0"/>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

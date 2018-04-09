@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.MyController">
+    <children>
+        <VBox prefHeight="429.0">
+            <children>
+                <AnchorPane>
+                    <children>
+                        <Label layoutX="352.0" layoutY="9.0" text="CPU Scheduling: Round Robin" textFill="#9f9f9f">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <HBox>
+                    <children>
+                        <Pane prefHeight="383.0" prefWidth="310.0">
+                            <children>
+                                <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="383.0" prefWidth="270.0">
+                                    <children>
+                                        <Pane layoutX="8.0" prefHeight="99.0" prefWidth="279.0" style="-fx-border-color: #E9E9E9;">
+                                            <children>
+                                                <Label layoutX="14.0" layoutY="14.0" text="QUANTUM" textFill="#a48a8a">
+                                                    <font>
+                                                        <Font size="17.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextField fx:id="quantum_textfield" layoutX="113.0" layoutY="15.0" promptText="Don't leave it blank" />
+                                                <Label layoutX="14.0" layoutY="53.0" text="BURST TIME" textFill="#a48a8a">
+                                                    <font>
+                                                        <Font size="17.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextField fx:id="burstTime_textfield" layoutX="113.0" layoutY="54.0" onKeyPressed="#burstTimeOnKeyPressed" prefHeight="25.0" prefWidth="84.0" />
+                                                <Button fx:id="addButton" layoutX="212.0" layoutY="54.0" mnemonicParsing="false" onAction="#addButtonOnAction" text="ADD" />
+                                            </children>
+                                        </Pane>
+                                        <Pane layoutX="9.0" layoutY="114.0" prefHeight="220.0" prefWidth="270.0" style="-fx-border-color: #E9E9E9;">
+                                            <children>
+                                                <TableView fx:id="burstTable" editable="true" layoutX="6.0" layoutY="7.0" prefHeight="181.0" prefWidth="190.0">
+                                                    <columns>
+                                                        <TableColumn fx:id="processName_TableColumn" prefWidth="91.0" text="Process Name" />
+                                                        <TableColumn fx:id="burstTime_TableColumn" prefWidth="84.0" text="Burst Time" />
+                                                    </columns>
+                                                </TableView>
+                                                <Button fx:id="deleteButton" layoutX="135.0" layoutY="188.0" mnemonicParsing="false" onAction="#deleteProcessButton" text="Delete" />
+                                            </children>
+                                        </Pane>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </Pane>
+                        <Pane prefHeight="383.0" prefWidth="612.0" style="-fx-border-color: #E9E9E9; -fx-border-radius: 5;">
+                            <children>
+                                <Pane layoutX="20.0" layoutY="14.0" prefHeight="271.0" prefWidth="572.0" style="-fx-border-color: #E9E9E9;">
+                                    <children>
+                                        <HBox fx:id="ganttChartContainer" prefHeight="271.0" prefWidth="572.0" />
+                                    </children>
+                                </Pane>
+                                <Pane layoutX="41.0" layoutY="306.0" prefHeight="63.0" style="-fx-border-color: #E9E9E9;">
+                                    <children>
+                                        <VBox>
+                                            <children>
+                                                <HBox>
+                                                    <children>
+                                                        <HBox>
+                                                            <children>
+                                                                <Label text="Average Waiting Time:" textFill="#a48a8a">
+                                                                    <font>
+                                                                        <Font size="17.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <Label fx:id="avg_waiting_time" text="0" textAlignment="CENTER" textFill="#a48a8a">
+                                                                    <font>
+                                                                        <Font size="17.0" />
+                                                                    </font>
+                                                                    <HBox.margin>
+                                                                        <Insets left="30.0" />
+                                                                    </HBox.margin>
+                                                                </Label>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </HBox>
+                                                <HBox>
+                                                    <children>
+                                                        <HBox>
+                                                            <children>
+                                                                <Label text="Average Turnaroud Time:" textFill="#a48a8a">
+                                                                    <font>
+                                                                        <Font size="17.0" />
+                                                                    </font>
+                                                                </Label>
+                                                                <Label fx:id="avg_turnaround_time" text="0" textFill="#a48a8a">
+                                                                    <font>
+                                                                        <Font size="17.0" />
+                                                                    </font>
+                                                                    <HBox.margin>
+                                                                        <Insets left="10.0" />
+                                                                    </HBox.margin>
+                                                                </Label>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </Pane>
+                                <Label fx:id="quantum_label" layoutX="286.0" layoutY="306.0" text="Quantum value:" textFill="#a48a8a">
+                                    <font>
+                                        <Font size="17.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <HBox.margin>
+                                <Insets right="5.0" />
+                            </HBox.margin>
+                        </Pane>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</VBox>
